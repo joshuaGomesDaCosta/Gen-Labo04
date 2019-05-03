@@ -7,6 +7,18 @@ public class OrdersWriter {
         this.orders = orders;
     }
 
+    public String writerProduct(Product product){
+        String prodString = ("{\"code\": \"" + product.getCode() + "\", \"color\": \"" + getColorFor(product) + "\", ");
+
+        if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
+            prodString += ("\"size\": \"" + getSizeFor(product) + "\", ");
+        }
+        
+        prodString += ("\"price\": " + product.getPrice() + ", \"currency\": \"" + product.getCurrency() + "\"}, ");
+
+        return prodString;
+    }
+
     public String getContents() {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
@@ -17,29 +29,12 @@ public class OrdersWriter {
             sb.append(order.getOrderId());
             sb.append(", ");
             sb.append("\"products\": [");
+
             for (int j = 0; j < order.getProductsCount(); j++) {
                 Product product = order.getProduct(j);
 
-                sb.append("{");
-                sb.append("\"code\": \"");
-                sb.append(product.getCode());
-                sb.append("\", ");
-                sb.append("\"color\": \"");
-                sb.append(getColorFor(product));
-                sb.append("\", ");
+                sb.append(writerProduct(product));
 
-                if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
-                    sb.append("\"size\": \"");
-                    sb.append(getSizeFor(product));
-                    sb.append("\", ");
-                }
-
-                sb.append("\"price\": ");
-                sb.append(product.getPrice());
-                sb.append(", ");
-                sb.append("\"currency\": \"");
-                sb.append(product.getCurrency());
-                sb.append("\"}, ");
             }
 
             if (order.getProductsCount() > 0) {
