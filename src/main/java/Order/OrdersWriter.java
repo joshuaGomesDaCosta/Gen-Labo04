@@ -13,7 +13,7 @@ public class OrdersWriter {
         if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
             prodString += ("\"size\": \"" + getSizeFor(product) + "\", ");
         }
-        
+
         prodString += ("\"price\": " + product.getPrice() + ", \"currency\": \"" + product.getCurrency() + "\"}, ");
 
         return prodString;
@@ -31,10 +31,7 @@ public class OrdersWriter {
             sb.append("\"products\": [");
 
             for (int j = 0; j < order.getProductsCount(); j++) {
-                Product product = order.getProduct(j);
-
-                sb.append(writerProduct(product));
-
+                sb.append(writerProduct(order.getProduct(j)));
             }
 
             if (order.getProductsCount() > 0) {
