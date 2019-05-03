@@ -23,14 +23,14 @@ public class OrdersWriter {
     }
 
 
-    public String writerProduct(Product product){
-        String prodString = ("{\"code\": \"" + product.getCode() + "\", \"color\": \"" + getColorFor(product) + "\", ");
+    public StringBuffer writerProduct(Product product){
+        StringBuffer prodString = new StringBuffer("{\"code\": \"" + product.getCode() + "\", \"color\": \"" + getColorFor(product) + "\", ");
 
         if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
-            prodString += ("\"size\": \"" + getSizeFor(product) + "\", ");
+            prodString.append("\"size\": \"" + getSizeFor(product) + "\", ");
         }
 
-        prodString += ("\"price\": " + product.getPrice() + ", \"currency\": \"" + product.getCurrency() + "\"}, ");
+        prodString.append("\"price\": " + product.getPrice() + ", \"currency\": \"" + product.getCurrency() + "\"}, ");
 
         return prodString;
     }
