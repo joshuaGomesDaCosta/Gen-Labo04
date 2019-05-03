@@ -1,9 +1,12 @@
 package Order;
 
-public class OrdersWriter {
-    private Orders orders;
+import java.util.ArrayList;
+import java.util.List;
 
-    public OrdersWriter(Orders orders) {
+public class OrdersWriter {
+    private List<Order> orders = new ArrayList<Order>();
+
+    public OrdersWriter(ArrayList<Order> orders) {
         this.orders = orders;
     }
 
@@ -22,7 +25,6 @@ public class OrdersWriter {
         return ordString;
     }
 
-
     public StringBuffer writerProduct(Product product){
         StringBuffer prodString = new StringBuffer("{\"code\": \"" + product.getCode() + "\", \"color\": \"" + getColorFor(product) + "\", ");
 
@@ -38,11 +40,11 @@ public class OrdersWriter {
     public String getContents() {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
-        for (int i = 0; i < orders.getOrdersCount(); i++) {
-            sb.append(writeOrder(orders.getOrder(i)));
+        for (int i = 0; i < orders.size(); i++) {
+            sb.append(writeOrder(orders.get(i)));
         }
 
-        if (orders.getOrdersCount() > 0) {
+        if (orders.size() > 0) {
             sb.delete(sb.length() - 2, sb.length());
         }
 
