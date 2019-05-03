@@ -1,4 +1,4 @@
-package ch.heigvd.gen2019;
+package Order;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ch.heigvd.gen2019;
+package Order;
 
 public class OrdersWriter {
     private Orders orders;
