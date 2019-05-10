@@ -29,7 +29,7 @@ public class OrdersWriter {
         StringBuffer prodString = new StringBuffer("{\"code\": \"" + product.getCode() + "\", \"color\": \"" + product.getColor() + "\", ");
 
         if (product.getSize() != null) {
-            prodString.append("\"size\": \"" + getSizeFor(product) + "\", ");
+            prodString.append("\"size\": \"" + product.getSize() + "\", ");
         }
 
         prodString.append("\"price\": " + product.getPrice() + ", \"currency\": \"" + product.getCurrency() + "\"}, ");
@@ -49,9 +49,5 @@ public class OrdersWriter {
         }
 
         return sb.append("]}").toString();
-    }
-
-    private String getSizeFor(Product product) {
-        return product.getSize().toString();
     }
 }
