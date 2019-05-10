@@ -26,7 +26,7 @@ public class OrdersWriter {
     }
 
     public StringBuffer writerProduct(Product product){
-        StringBuffer prodString = new StringBuffer("{\"code\": \"" + product.getCode() + "\", \"color\": \"" + getColorFor(product) + "\", ");
+        StringBuffer prodString = new StringBuffer("{\"code\": \"" + product.getCode() + "\", \"color\": \"" + product.getColor() + "\", ");
 
         if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
             prodString.append("\"size\": \"" + getSizeFor(product) + "\", ");
@@ -68,9 +68,5 @@ public class OrdersWriter {
             default:
                 return "Invalid Size";
         }
-    }
-
-    private String getColorFor(Product product) {
-        return product.getColor().toString();
     }
 }
