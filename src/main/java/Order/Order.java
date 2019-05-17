@@ -28,7 +28,7 @@ public class Order {
         products.add(product);
     }
 
-    public StringBuffer writeOrder(){
+    public StringBuffer toStringBuffer(){
         StringBuffer ordString = new StringBuffer("{\"id\": " + getOrderId() + ", \"products\": [");
 
         for (int j = 0; j < getProductsCount(); j++) {

@@ -14,7 +14,7 @@ public class OrdersWriter {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         for (int i = 0; i < orders.size(); i++) {
-            sb.append(orders.get(i).writeOrder());
+            sb.append(orders.get(i).toStringBuffer());
         }
 
         if (orders.size() > 0) {
