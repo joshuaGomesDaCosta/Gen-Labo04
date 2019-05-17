@@ -36,4 +36,16 @@ public class Product {
     public String getCurrency() {
         return currency;
     }
+
+    public StringBuffer writerProduct(){
+        StringBuffer prodString = new StringBuffer("{\"code\": \"" + getCode() + "\", \"color\": \"" + getColor() + "\", ");
+
+        if (getSize() != null) {
+            prodString.append("\"size\": \"" + getSize() + "\", ");
+        }
+
+        prodString.append("\"price\": " + getPrice() + ", \"currency\": \"" + getCurrency() + "\"}, ");
+
+        return prodString;
+    }
 }
