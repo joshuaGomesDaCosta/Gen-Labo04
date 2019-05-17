@@ -27,4 +27,19 @@ public class Order {
     public void AddProduct(Product product) {
         products.add(product);
     }
+
+    public StringBuffer writeOrder(){
+        StringBuffer ordString = new StringBuffer("{\"id\": " + getOrderId() + ", \"products\": [");
+
+        for (int j = 0; j < getProductsCount(); j++) {
+            ordString.append(getProduct(j).toStringBuffer());
+        }
+
+        if (getProductsCount() > 0) {
+            ordString.delete(ordString.length() - 2, ordString.length());
+        }
+
+        ordString.append("]}, ");
+        return ordString;
+    }
 }

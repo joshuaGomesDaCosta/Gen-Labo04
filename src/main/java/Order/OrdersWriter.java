@@ -10,26 +10,11 @@ public class OrdersWriter {
         this.orders = orders;
     }
 
-    public StringBuffer writeOrder(Order order){
-        StringBuffer ordString = new StringBuffer("{\"id\": " + order.getOrderId() + ", \"products\": [");
-
-        for (int j = 0; j < order.getProductsCount(); j++) {
-            ordString.append(order.getProduct(j).toStringBuffer());
-        }
-
-        if (order.getProductsCount() > 0) {
-            ordString.delete(ordString.length() - 2, ordString.length());
-        }
-
-        ordString.append("]}, ");
-        return ordString;
-    }
-
     public String getContents() {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         for (int i = 0; i < orders.size(); i++) {
-            sb.append(writeOrder(orders.get(i)));
+            sb.append(orders.get(i).writeOrder());
         }
 
         if (orders.size() > 0) {
