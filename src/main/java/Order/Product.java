@@ -37,7 +37,7 @@ public class Product {
         return currency;
     }
 
-    public StringBuffer writerProduct(){
+    public StringBuffer toStringBuffer(){
         StringBuffer prodString = new StringBuffer("{\"code\": \"" + getCode() + "\", \"color\": \"" + getColor() + "\", ");
 
         if (getSize() != null) {

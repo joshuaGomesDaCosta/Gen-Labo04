@@ -14,7 +14,7 @@ public class OrdersWriter {
         StringBuffer ordString = new StringBuffer("{\"id\": " + order.getOrderId() + ", \"products\": [");
 
         for (int j = 0; j < order.getProductsCount(); j++) {
-            ordString.append(order.getProduct(j).writerProduct());
+            ordString.append(order.getProduct(j).toStringBuffer());
         }
 
         if (order.getProductsCount() > 0) {
